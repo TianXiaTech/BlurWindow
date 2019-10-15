@@ -7,83 +7,51 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace BlurWindow
+namespace TianXiaTech
 {
-    class WindowHelper
+    public struct ACCENTPOLICY
+    {
+        public int nAccentState;
+        public int nFlags;
+        public int nColor;
+        public int nAnimationId;
+    }
+
+    public struct WINCOMPATTRDATA
+    {
+        public int nAttribute;
+        public IntPtr pData;
+        public int ulDataSize;
+    }
+
+    public class WindowHelper
     {
         [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WINCOMPATTRDATA data);
 
-        internal enum AccentState
+        private const int ACCENT_ENABLE_BLURBEHIND = 3;
+        private const int WCA_ACCENT_POLICY = 19;
+
+        public static void BlurWindow(System.Windows.Window window)
         {
-            AccentDisabled = 1,
-            AccentEnableGradient = 0,
-            AccentEnableTransparentgradient = 2,
-            AccentEnableBlurbehind = 3,
-            AccentInvalidState = 4
-        }
+            var winhelp = new WindowInteropHelper(window);
 
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct AccentPolicy
-        {
-            public AccentState AccentState;
-            // ReSharper disable FieldCanBeMadeReadOnly.Global
-            public int AccentFlags;
-            public int GradientColor;
-            public int AnimationId;
-            // ReSharper restore FieldCanBeMadeReadOnly.Global
-        }
+            ACCENTPOLICY policy_Blur = new ACCENTPOLICY();
+            policy_Blur.nAccentState = ACCENT_ENABLE_BLURBEHIND;
+            policy_Blur.nFlags = 0;
+            policy_Blur.nColor = 0;
+            policy_Blur.nAnimationId = 0;
 
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct WindowCompositionAttributeData
-        {
-            public WindowCompositionAttribute Attribute;
-            public IntPtr Data;
-            public int SizeOfData;
-        }
+            WINCOMPATTRDATA wINCOMPATTRDATA = new WINCOMPATTRDATA();
+            wINCOMPATTRDATA.nAttribute = WCA_ACCENT_POLICY;
+            IntPtr pData = Marshal.AllocHGlobal(Marshal.SizeOf(policy_Blur));
+            Marshal.StructureToPtr(policy_Blur, pData, false);
+            wINCOMPATTRDATA.pData = pData;
+            wINCOMPATTRDATA.ulDataSize = Marshal.SizeOf(policy_Blur);
 
-        internal enum WindowCompositionAttribute
-        {
-            // ...
-            WcaAccentPolicy = 19
-            // ...
-        }
+            SetWindowCompositionAttribute(winhelp.Handle, ref wINCOMPATTRDATA);
 
-        public bool BlurWindow(Window win)
-        {
-            if (Environment.OSVersion.Version.Major < 10 && Environment.OSVersion.Version.Minor < 2)
-            {
-                return false;
-            }
-
-            try
-            {
-                var winhelp = new WindowInteropHelper(win);
-                var accent = new AccentPolicy
-                {
-                    AccentState = AccentState.AccentEnableBlurbehind
-                };
-                var accentStructSize = Marshal.SizeOf(accent);
-
-                var accentPtr = Marshal.AllocHGlobal(accentStructSize);
-                Marshal.StructureToPtr(accent, accentPtr, false);
-
-                var data = new WindowCompositionAttributeData
-                {
-                    Attribute = WindowCompositionAttribute.WcaAccentPolicy,
-                    SizeOfData = accentStructSize,
-                    Data = accentPtr
-                };
-
-                SetWindowCompositionAttribute(winhelp.Handle, ref data);
-
-                Marshal.FreeHGlobal(accentPtr);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Marshal.FreeHGlobal(pData);
         }
     }
 }
