@@ -17,6 +17,11 @@ WPF窗体毛玻璃效果
  <img align="center" alt="demo" src="ScreenShots/2.png" />
 </p>
 
+### 实际使用效果
+<p align="center">
+ <img align="center" alt="start up" src="ScreenShots/3.png" />
+</p>
+
 
 ## License
 
