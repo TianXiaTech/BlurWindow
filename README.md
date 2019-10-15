@@ -2,6 +2,7 @@
 WPF窗体毛玻璃效果
 
 > 输出为类库,可以直接引用使用  
+> 窗体样式位于Theme.xaml，可自行修改  
 > 本项目隶属于[TianXiaTech](https://github.com/TianXiaTech)
 
 ## 演示效果
