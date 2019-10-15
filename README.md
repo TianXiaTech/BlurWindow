@@ -22,6 +22,8 @@ WPF窗体毛玻璃效果
  <img align="center" alt="start up" src="ScreenShots/3.png" />
 </p>
 
+## 感谢
+项目参考了https://github.com/TranslucentTB/TranslucentTB
 
 ## License
 
