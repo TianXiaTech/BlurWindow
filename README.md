@@ -1,5 +1,5 @@
 # BlurWindow
-WPF Aero Glass
+WPF Aero Glass Lib
 
 > The window style is located in Theme.xaml and can be modified by yourself.  
 > This project is part of [TianXiaTech](https://github.com/TianXiaTech)
@@ -25,7 +25,7 @@ Make MainWindow inherit from TianXiaTech.BlurWindow
 public partial class MainWindow : TianXiaTech.BlurWindow
 `
 
-### Step4
+### Step4  
 Specify background transparency
 `
  <Window.Background>
