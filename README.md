@@ -1,29 +1,48 @@
 # BlurWindow
-WPF窗体毛玻璃效果
+WFP Aero Glass
 
-> 输出为类库,可以直接引用使用  
-> 窗体样式位于Theme.xaml，可自行修改  
-> 本项目隶属于[TianXiaTech](https://github.com/TianXiaTech)
+> Nuget
+`
+PM>Install-Package BlurWindow -Version 1.0.0.1
+`  
+> The window style is located in Theme.xaml and can be modified by yourself.  
+> This project is part of[TianXiaTech](https://github.com/TianXiaTech)
 
-## 演示效果
+## Usage
+### Step 1
+import xaml prefix  
+`
+xmlns:blurwindow=&quot;clr-namespace:TianXiaTech;assembly=BlurWindow&quot;
+`
 
-### 透明度0.8
+### Step2
+Replace <Window></Window> with <blurwindow:BlurWindow></blurwindow:BlurWindow>
+
+### Step3  
+Make MainWindow inherit from TianXiaTech.BlurWindow
+`
+public partial class MainWindow : TianXiaTech.BlurWindow
+`
+
+## Sample screenshot
+
+### Opacity 0.8
 <p align="center">
  <img align="center" alt="demo" src="ScreenShots/1.png" />
 </p>
 
-### 透明度0.5
+### Opacity 0.5
 <p align="center">
  <img align="center" alt="demo" src="ScreenShots/2.png" />
 </p>
 
-### 实际使用效果
+### Actual use effect
 <p align="center">
  <img align="center" alt="start up" src="ScreenShots/3.png" />
 </p>
 
-## 感谢
-项目参考了https://github.com/TranslucentTB/TranslucentTB
+## Thanks
+Project reference https://github.com/TranslucentTB/TranslucentTB
 
 ## License
 
