@@ -17,7 +17,7 @@ xmlns:blurwindow=&quot;clr-namespace:TianXiaTech;assembly=BlurWindow&quot;
 `
 
 ### Step2
-Replace &lt;Window&gt;&lt;/Window&gt; with &lt;blurwindow:BlurWindow&gt;&lt;/blurwindow:BlurWindow&gt;
+Replace **&lt;Window&gt;&lt;/Window&gt;** with **&lt;blurwindow:BlurWindow&gt;&lt;/blurwindow:BlurWindow&gt**;
 
 ### Step3  
 Make MainWindow inherit from TianXiaTech.BlurWindow  
