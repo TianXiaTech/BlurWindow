@@ -1,14 +1,13 @@
 # BlurWindow
 WFP Aero Glass
 
+> The window style is located in Theme.xaml and can be modified by yourself.  
+> This project is part of[TianXiaTech](https://github.com/TianXiaTech)
+
 ## Nuget
 `
 PM>Install-Package BlurWindow -Version 1.0.0.1
 `  
-
-
-> The window style is located in Theme.xaml and can be modified by yourself.  
-> This project is part of[TianXiaTech](https://github.com/TianXiaTech)
 
 ## Usage
 ### Step 1
