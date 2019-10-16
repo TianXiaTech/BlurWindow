@@ -1,5 +1,5 @@
 # BlurWindow
-WFP Aero Glass
+WPF Aero Glass
 
 > The window style is located in Theme.xaml and can be modified by yourself.  
 > This project is part of [TianXiaTech](https://github.com/TianXiaTech)
