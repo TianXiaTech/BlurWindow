@@ -13,7 +13,7 @@ PM>Install-Package BlurWindow -Version 1.0.0.1
 ### Step 1
 import xaml prefix  
 `
-xmlns:blurwindow=&quot;clr-namespace:TianXiaTech;assembly=BlurWindow&quot;
+xmlns:blurwindow="clr-namespace:TianXiaTech;assembly=BlurWindow";
 `
 
 ### Step2
