@@ -28,9 +28,9 @@ public partial class MainWindow : TianXiaTech.BlurWindow
 ### Step4  
 Specify background transparency  
 `
- <Window.Background>
-    <!--Specify transparency here-->
-    <SolidColorBrush Color="White" Opacity=".5"/>
+ <Window.Background>  
+    <!--Specify transparency here-->  
+    <SolidColorBrush Color="White" Opacity=".5"/>  
  </Window.Background>
 `
 
