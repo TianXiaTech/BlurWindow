@@ -2,7 +2,7 @@
 WFP Aero Glass
 
 > The window style is located in Theme.xaml and can be modified by yourself.  
-> This project is part of[TianXiaTech](https://github.com/TianXiaTech)
+> This project is part of [TianXiaTech](https://github.com/TianXiaTech)
 
 ## Nuget
 `
@@ -17,10 +17,10 @@ xmlns:blurwindow=&quot;clr-namespace:TianXiaTech;assembly=BlurWindow&quot;
 `
 
 ### Step2
-Replace <Window></Window> with <blurwindow:BlurWindow></blurwindow:BlurWindow>
+Replace &lt;Window&gt;&lt;/Window&gt; with &lt;blurwindow:BlurWindow&gt;&lt;/blurwindow:BlurWindow&gt;
 
 ### Step3  
-Make MainWindow inherit from TianXiaTech.BlurWindow
+Make MainWindow inherit from TianXiaTech.BlurWindow  
 `
 public partial class MainWindow : TianXiaTech.BlurWindow
 `
