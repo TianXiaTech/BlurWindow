@@ -12,27 +12,28 @@ PM>Install-Package BlurWindow -Version 1.0.0.1
 ## Usage
 ### Step 1
 import xaml prefix  
-`
+```
 xmlns:blurwindow="clr-namespace:TianXiaTech;assembly=BlurWindow";
-`
+```
 
 ### Step2
 Replace **&lt;Window&gt;&lt;/Window&gt;** with **&lt;blurwindow:BlurWindow&gt;&lt;/blurwindow:BlurWindow&gt;**
 
 ### Step3  
 Make MainWindow inherit from TianXiaTech.BlurWindow  
-`
+```
 public partial class MainWindow : TianXiaTech.BlurWindow
-`
+```
 
 ### Step4  
 Specify background transparency  
-`
- <Window.Background>  
-    <!--Specify transparency here-->  
+
+```
+<Window.Background>
+    <!--Specify transparency here-->
     <SolidColorBrush Color="White" Opacity=".5"/>  
  </Window.Background>
-`
+```
 
 ## Sample screenshot
 
