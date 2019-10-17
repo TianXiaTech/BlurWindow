@@ -8,10 +8,17 @@
         xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow"
         Title="MainWindow" Height="450" Width="800">
     <Window.Background>
-        <!--这里可以设置毛玻璃透明度-->
+        <!--Specify transparency here-->
         <SolidColorBrush Color="White" Opacity=".5"/>
     </Window.Background>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <!--Reserve full screen background-->
+            <RowDefinition Height="26.4"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Add your content here-->
+        <Grid Grid.Row="1"></Grid>
     </Grid>
 </control:BlurWindow>
