@@ -22,10 +22,7 @@ namespace BlurWindowDemo
     {
         public MainWindow()
         {
-            InitializeComponent();
-
-
-            
+            InitializeComponent();           
         }
     }
 }
