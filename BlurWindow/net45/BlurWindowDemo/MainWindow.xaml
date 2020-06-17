@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlurWindowDemo"
         mc:Ignorable="d"
-        xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow"
+        xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow" Icon="icon.png" BorderBrush="Transparent"
         Title="MainWindow" Height="450" Width="800">
     <Window.Background>
         <!--Specify transparency here-->

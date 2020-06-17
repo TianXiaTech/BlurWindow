@@ -5,8 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Version>2.0.0</Version>
-    <PackageId>BlurWindow netcore3.1</PackageId>
-    <Product>BlurWindow netcore3.1</Product>
+    <PackageId>BlurWindow</PackageId>
+    <Product>BlurWindow</Product>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>ZTI</Authors>
   </PropertyGroup>
 
 </Project>

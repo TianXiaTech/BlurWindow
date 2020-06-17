@@ -46,9 +46,23 @@ namespace TianXiaTech
     /// </summary>
     public class BlurWindow : Window
     {
+        public static DependencyProperty TitleForegroundProperty = DependencyProperty.Register("TitlTitleForegrounde", typeof(SolidColorBrush), typeof(BlurWindow),new PropertyMetadata(Brushes.Black));
+
         static BlurWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(BlurWindow), new FrameworkPropertyMetadata(typeof(BlurWindow)));
+        }
+
+        public SolidColorBrush TitleForeground
+        {
+            get
+            {
+                return (SolidColorBrush)GetValue(TitleForegroundProperty);
+            }
+            set
+            {
+                SetValue(TitleForegroundProperty, value);
+            }
         }
 
         public BlurWindow()
@@ -63,7 +77,6 @@ namespace TianXiaTech
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow, CanResizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow, CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow, CanResizeWindow));
-            CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
         }
 
         private void CanResizeWindow(object sender, CanExecuteRoutedEventArgs e)
@@ -95,19 +108,6 @@ namespace TianXiaTech
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.RestoreWindow(this);
-        }
-
-
-        private void ShowSystemMenu(object sender, ExecutedRoutedEventArgs e)
-        {
-            var element = e.OriginalSource as FrameworkElement;
-            if (element == null)
-                return;
-
-            var point = WindowState == WindowState.Maximized ? new Point(0, element.ActualHeight)
-                : new Point(Left + BorderThickness.Left, element.ActualHeight + Top + BorderThickness.Top);
-            point = element.TransformToAncestor(this).Transform(point);
-            SystemCommands.ShowSystemMenu(this, point);
         }
     }
 }
