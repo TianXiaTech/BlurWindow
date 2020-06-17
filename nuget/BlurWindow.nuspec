@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>BlurWindow</id>
+    <title>BlurWindow</title>
+    <version>2.0.0</version>
+    <authors>ZTI</authors>
+    <projectUrl>https://github.com/TianXiaTech/BlurWindow</projectUrl>
+    <icon>icon.png</icon>
+    <license type="file">LICENSE.txt</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WPF Aero Glass Window Lib</description>
+	<releaseNotes>Now you can set window icon and borderbrush</releaseNotes>
+	<copyright>Copyright ©2020 ZTI</copyright>
+	<tags>WPF .NET Aero Transparent Blur Window</tags>	
+	<dependencies>
+        <group targetFramework=".NETFramework4.5"></group>   
+        <group targetFramework=".NETCoreApp3.1"></group>
+    </dependencies>
+ </metadata>
+ <files>
+    <file src="lib\**" target="lib" />
+	<file src="icon.png" target="." /> 
+    <file src="LICENSE.txt" target="." />	
+</files>
+</package>
