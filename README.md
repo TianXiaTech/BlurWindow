@@ -1,6 +1,22 @@
 # BlurWindow
 WPF Aero Glass Lib
 
+</p>
+<p align="center">
+<a href="https://github.com/TianXiaTech/BlurWindow/stargazers" target="_blank">
+ <img alt="GitHub stars" src="https://img.shields.io/github/stars/TianXiaTech/BlurWindow.svg" />
+</a>
+<a href="https://github.com/TianXiaTech/BlurWindow/releases" target="_blank">
+ <img alt="All releases" src="https://img.shields.io/github/downloads/TianXiaTech/BlurWindow/total.svg" />
+</a>
+<a href="https://github.com/TianXiaTech/BlurWindow/network/members" target="_blank">
+ <img alt="Github forks" src="https://img.shields.io/github/forks/TianXiaTech/BlurWindow.svg" />
+</a>
+<a href="https://github.com/TianXiaTech/BlurWindow/issues" target="_blank">
+ <img alt="All issues" src="https://img.shields.io/github/issues/TianXiaTech/BlurWindow.svg" />
+</a>
+</p>
+
 > The window style is located in Theme.xaml and can be modified by yourself.  
 > This project is part of [TianXiaTech](https://github.com/TianXiaTech)
 
