@@ -1,6 +1,9 @@
 # BlurWindow
 WPF Aero Glass Lib
 
+> The window style is located in Theme.xaml and can be modified by yourself.  
+> This project is part of [TianXiaTech](https://github.com/TianXiaTech)
+
 </p>
 <p align="center">
 <a href="https://github.com/TianXiaTech/BlurWindow/stargazers" target="_blank">
@@ -17,8 +20,6 @@ WPF Aero Glass Lib
 </a>
 </p>
 
-> The window style is located in Theme.xaml and can be modified by yourself.  
-> This project is part of [TianXiaTech](https://github.com/TianXiaTech)
 
 ## Nuget
 `
