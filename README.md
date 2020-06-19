@@ -53,7 +53,7 @@ Specify background transparency
 ```
 
 ## Additional
-You can set the window to be partially transparent, like below  
+**You can set the window to be partially transparent, like below**  
 ```
 <Grid>
     <Grid.ColumnDefinitions>
@@ -72,14 +72,13 @@ You can set the window to be partially transparent, like below
 ```
 <p align="center">
  <img align="center" alt="partially transparent" src="ScreenShots/4.png" />
-</p>
+</p>  
 
-
-You can also set the picture background directly
+**You can also set the picture background directly**  
 ```
 <Grid>
     <Grid.Background>
-        <ImageBrush ImageSource="yasuo.jpg" Stretch="UniformToFill" Opacity=".2"/>
+        <ImageBrush ImageSource="yasuo.jpg" Stretch="UniformToFill" Opacity=".5"/>
     </Grid.Background>
 </Grid>
 ```
