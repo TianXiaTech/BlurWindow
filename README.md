@@ -1,5 +1,8 @@
 # BlurWindow
 
+<p align="center">
+ <img align="center" alt="logo" src="ScreenShots/logo.png" />
+</p>
 </p>
 <p align="center">
 <a href="https://github.com/TianXiaTech/BlurWindow/stargazers" target="_blank">
