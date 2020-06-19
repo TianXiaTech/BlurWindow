@@ -52,21 +52,52 @@ Specify background transparency
  </Window.Background>
 ```
 
+## Additional
+You can set the window to be partially transparent, like below  
+```
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="3*"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid  Grid.Column="0">
+        <Grid.Background>
+            <SolidColorBrush Color="MediumPurple" Opacity=".5"/>
+        </Grid.Background>
+    </Grid>
+
+    <Grid Grid.Column="1" Background="White"/>
+</Grid>
+```
+<p align="center">
+ <img align="center" alt="partially transparent" src="ScreenShots/4.png" />
+</p>
+
+
+You can also set the picture background directly
+```
+<Grid>
+    <Grid.Background>
+        <ImageBrush ImageSource="yasuo.jpg" Stretch="UniformToFill" Opacity=".2"/>
+    </Grid.Background>
+</Grid>
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/5.png" />
+</p>
+
+
 ## Sample screenshot
 
 ### Opacity 0.8
 <p align="center">
- <img align="center" alt="demo" src="ScreenShots/1.png" />
+ <img align="center" alt="demo img" src="ScreenShots/1.png" />
 </p>
 
 ### Opacity 0.5
 <p align="center">
- <img align="center" alt="demo" src="ScreenShots/2.png" />
-</p>
-
-### Actual use effect
-<p align="center">
- <img align="center" alt="start up" src="ScreenShots/3.png" />
+ <img align="center" alt="demo img" src="ScreenShots/2.png" />
 </p>
 
 ## Thanks
