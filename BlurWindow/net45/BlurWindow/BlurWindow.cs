@@ -114,7 +114,7 @@ namespace TianXiaTech
 
         private void InitEmbedWindow()
         {
-
+            embedWindow.WindowStyle = WindowStyle.None;
         }
 
         private void InitializeCommands()
