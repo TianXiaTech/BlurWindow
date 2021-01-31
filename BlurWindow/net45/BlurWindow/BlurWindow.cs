@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlurWindow;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,13 +47,7 @@ namespace TianXiaTech
     /// </summary>
     public class BlurWindow : Window
     {
-        private Window embedWindow;
-
-        public const int WM_MOVING = 0x0216;
-        public const int WM_SIZE = 0x0005;
-
-        public static DependencyProperty TitleForegroundProperty = DependencyProperty.Register("TitlTitleForegrounde", typeof(SolidColorBrush), typeof(BlurWindow),new PropertyMetadata(Brushes.Black));
-        public static DependencyProperty EmbedBackgroundProperty = DependencyProperty.Register("EmbedBackground", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false,OnEmbedBackgroundChanged));
+        public static DependencyProperty TitleForegroundProperty = DependencyProperty.Register("TitlTitleForeground", typeof(SolidColorBrush), typeof(BlurWindow),new PropertyMetadata(Brushes.Black));
 
         static BlurWindow()
         {
@@ -75,46 +70,6 @@ namespace TianXiaTech
         {
             InitializeCommands();
             this.Loaded += (a, b) => WindowHelper.BlurWindow(this);         
-        }
-
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            System.Windows.Interop.HwndSource hwndSource = PresentationSource.FromVisual(this) as System.Windows.Interop.HwndSource;
-            if(hwndSource != null)
-            {
-                hwndSource.AddHook(Hook);
-            }
-        }
-
-        private IntPtr Hook(IntPtr hwnd,int msg,IntPtr wParam,IntPtr lParam,ref bool handled)
-        {
-            switch(msg)
-            {
-                case WM_SIZE:
-                    SetEmbedWindowSize(lParam);
-                    break;
-                case WM_MOVING:
-                    SetEmbedWindowPos(lParam);
-                    break;
-            }
-
-            return IntPtr.Zero;
-        }
-
-        private void SetEmbedWindowSize(IntPtr lParam)
-        {
-
-        }
-
-        private void SetEmbedWindowPos(IntPtr lParam)
-        {
-
-        }
-
-        private void InitEmbedWindow()
-        {
-            embedWindow.WindowStyle = WindowStyle.None;
         }
 
         private void InitializeCommands()
@@ -154,23 +109,6 @@ namespace TianXiaTech
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.RestoreWindow(this);
-        }
-
-        private void SetEmbedWindowVisibility(bool flag)
-        {
-
-        }
-
-        private void SyncBackground(bool flag)
-        {
-
-        }
-
-        private static void OnEmbedBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            BlurWindow blurWindow = (BlurWindow)d;
-            blurWindow.SetEmbedWindowVisibility((bool)e.NewValue);
-            blurWindow.SyncBackground((bool)e.NewValue);
         }
     }
 }
