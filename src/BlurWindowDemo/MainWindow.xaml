@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BlurWindowDemo"
         mc:Ignorable="d"
         xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow"
-        Title="MainWindow" Height="450" Width="800" Icon="icon.png" BorderBrush="Transparent">
+        Title="MainWindow" Height="450" Width="800" Icon="icon.png" BorderBrush="Transparent" TitleForeground="Blue">
     <Window.Background>
         <!--Specify transparency here-->
         <SolidColorBrush Color="White" Opacity=".5"/>
