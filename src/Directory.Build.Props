@@ -1,0 +1,10 @@
+<Project>
+    <!-- Project properties -->
+    <PropertyGroup>
+        <TargetFrameworks>net5.0-windows</TargetFrameworks>
+		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <LangVersion>8.0</LangVersion>
+		<UseWPF>true</UseWPF>
+    </PropertyGroup>
+</Project>
