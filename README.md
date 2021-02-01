@@ -89,6 +89,13 @@ Specify background transparency
   <img align="center" alt="img background" src="ScreenShots/5.png" />
 </p>
 
+**Title foreground**
+```
+        TitleForeground="Blue"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/6.png" />
+</p>
 
 ## Sample screenshot
 
