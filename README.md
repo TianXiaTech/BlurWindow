@@ -109,6 +109,11 @@ Specify background transparency
  <img align="center" alt="demo img" src="ScreenShots/2.png" />
 </p>
 
+## Todo
+* Show/Hide icon
+* Show/Hide control box
+* Use WPF attached property
+
 ## Thanks
 Project reference https://github.com/TranslucentTB/TranslucentTB
 
