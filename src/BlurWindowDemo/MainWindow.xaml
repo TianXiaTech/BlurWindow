@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BlurWindowDemo"
         mc:Ignorable="d"
         xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow"
-        Title="MainWindow" Height="450" Width="800" Icon="icon.png" BorderBrush="Transparent" TitleForeground="Blue">
+        Title="BlurWindowDemo" Height="450" Width="800" Icon="icon.png" BorderBrush="Transparent" TitleForeground="Blue" Name="main">
     <Window.Background>
         <!--Specify transparency here-->
         <SolidColorBrush Color="White" Opacity=".5"/>
@@ -14,11 +14,103 @@
     <Grid>
         <Grid.RowDefinitions>
             <!--Reserve full screen background-->
-            <RowDefinition Height="26.4"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" Height="26.4" Name="titlegrid">
+            
+        </Grid>
+
         <!--Add your content here-->
-        <Grid Grid.Row="1"></Grid>
+        <Grid Grid.Row="1" Name="maingrid">
+            <StackPanel>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="将窗口内容扩展至标题栏显示"></Label>
+                    <ComboBox  Width="120" SelectedIndex="0" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_FullContent_SelectionChanged" Name="cbx_FullContent" Grid.Column="1">
+                        <ComboBoxItem>否</ComboBoxItem>
+                        <ComboBoxItem>是</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="窗口图标"></Label>
+                    <ComboBox Width="120" SelectedIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_IconVisibility_SelectionChanged" Name="cbx_IconVisibility" Grid.Column="1">
+                        <ComboBoxItem>隐藏</ComboBoxItem>
+                        <ComboBoxItem>显示</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="标题文本"></Label>
+                    <ComboBox Width="120" SelectedIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_TitleVisibility_SelectionChanged" Name="cbx_TitleVisibility" Grid.Column="1">
+                        <ComboBoxItem>隐藏</ComboBoxItem>
+                        <ComboBoxItem>显示</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="标题文本颜色"></Label>
+                    <ComboBox Width="120" SelectedIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_TitleForeground_SelectionChanged" Name="cbx_TitleForeground" Grid.Column="1">
+                        <ComboBoxItem>
+                            <WrapPanel>
+                                <Rectangle Fill="Blue" Width="30"></Rectangle>
+                                <Label Content="蓝色"></Label>
+                            </WrapPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <WrapPanel>
+                                <Rectangle Fill="Black" Width="30"></Rectangle>
+                                <Label Content="黑色"></Label>
+                            </WrapPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="控制按钮"></Label>
+                    <ComboBox Width="120" SelectedIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_ControlBoxVisibility_SelectionChanged" Name="cbx_ControlBoxVisibility" Grid.Column="1">
+                        <ComboBoxItem>隐藏</ComboBoxItem>
+                        <ComboBoxItem>显示</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="标题栏右键菜单"></Label>
+                    <ComboBox Width="120" SelectedIndex="1" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_EnableContextMenu_SelectionChanged" Name="cbx_EnableContextMenu" Grid.Column="1">
+                        <ComboBoxItem>禁用</ComboBoxItem>
+                        <ComboBoxItem>启用</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="毛玻璃透明度"></Label>
+                    <Slider Width="120" Minimum="0" Maximum="1" TickFrequency="0.01" IsSnapToTickEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Name="slider_Opacity" Grid.Column="1" Value="{Binding ElementName=main,Path=(Window.Background).(SolidColorBrush.Opacity)}"></Slider>
+                    <Label Content="{Binding ElementName=slider_Opacity,Path=Value}" Grid.Column="1" HorizontalAlignment="Left" Margin="130,0,0,0"></Label>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 </control:BlurWindow>

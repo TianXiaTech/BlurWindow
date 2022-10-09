@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -17,7 +18,11 @@ namespace TianXiaTech
 {
     public class BlurWindow : Window
     {
-        public static DependencyProperty TitleForegroundProperty = DependencyProperty.Register("TitlTitleForegrounde", typeof(SolidColorBrush), typeof(BlurWindow), new PropertyMetadata(Brushes.Black));
+        public static DependencyProperty TitleForegroundProperty = DependencyProperty.Register("TitleForeground", typeof(SolidColorBrush), typeof(BlurWindow), new PropertyMetadata(Brushes.Black));
+        public static DependencyProperty ControlBoxVisibilityProperty = DependencyProperty.Register("ControlBoxVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty TitleVisibilityProperty = DependencyProperty.Register("TitleVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty IsEnableContextMenuProperty = DependencyProperty.Register("IsEnableContextMenu", typeof(bool), typeof(BlurWindow), new PropertyMetadata(true));
 
         static BlurWindow()
         {
@@ -36,6 +41,54 @@ namespace TianXiaTech
             }
         }
 
+        public Visibility ControlBoxVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(ControlBoxVisibilityProperty);
+            }
+            set
+            {
+                SetValue(ControlBoxVisibilityProperty, value);
+            }
+        }
+
+        public Visibility IconVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(IconVisibilityProperty);
+            }
+            set
+            {
+                SetValue(IconVisibilityProperty, value);
+            }
+        }
+
+        public Visibility TitleVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(TitleVisibilityProperty);
+            }
+            set
+            {
+                SetValue(TitleVisibilityProperty, value);
+            }
+        }
+
+        public bool IsEnableContextMenu
+        {
+            get
+            {
+                return (bool)GetValue(IsEnableContextMenuProperty);
+            }
+            set
+            {
+                SetValue(IsEnableContextMenuProperty, value);
+            }
+        }
+
         public BlurWindow()
         {
             InitializeCommands();
@@ -48,6 +101,32 @@ namespace TianXiaTech
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow, CanResizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow, CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow, CanResizeWindow));
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            HwndSource.FromHwnd(new WindowInteropHelper(this).Handle).AddHook(WndProc);
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (((msg == WindowHelper.WM_SYSTEMMENU) && (wParam.ToInt32() == WindowHelper.WP_SYSTEMMENU)) || msg == WindowHelper.WM_NCRBUTTONUP)
+            {
+                HwndSource hwndSource = HwndSource.FromHwnd(hwnd);
+                var blurWindow = hwndSource.RootVisual as BlurWindow;
+
+                if (blurWindow != null)
+                {
+                    handled = !blurWindow.IsEnableContextMenu;
+                }
+                else
+                {
+                    handled = false;
+                }
+            }
+
+            return IntPtr.Zero;
         }
 
         private void CanResizeWindow(object sender, CanExecuteRoutedEventArgs e)

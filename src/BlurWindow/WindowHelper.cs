@@ -26,6 +26,10 @@ namespace TianXiaTech
 
     public class WindowHelper
     {
+        public const uint WM_SYSTEMMENU = 0xa4;
+        public const uint WP_SYSTEMMENU = 0x02;
+        public const uint WM_NCRBUTTONUP = 0x00A5;
+
         [DllImport("user32.dll")]
         public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WINCOMPATTRDATA data);
 
