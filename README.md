@@ -97,6 +97,38 @@ Specify background transparency
   <img align="center" alt="img background" src="ScreenShots/6.png" />
 </p>
 
+**ControlBox Visibility**
+```
+        ControlBoxVisibility="Visibility.Collapsed"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/7.png" />
+</p>
+
+**Icon Visibility**
+```
+        IconVisibility="Visibility.Collapsed"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/8.png" />
+</p>
+
+**Title Visibility**
+```
+        TitleVisibility="Visibility.Collapsed"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/9.png" />
+</p>
+
+**IsEnable ContextMenu**
+```
+        IsEnableContextMenu="Visibility.Collapsed"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/10.png" />
+</p>
+
 ## Sample screenshot
 
 ### Opacity 0.8
