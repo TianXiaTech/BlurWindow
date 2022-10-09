@@ -3,20 +3,21 @@
   <metadata>
     <id>BlurWindow</id>
     <title>BlurWindow</title>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
     <authors>ZTI</authors>
     <projectUrl>https://github.com/TianXiaTech/BlurWindow</projectUrl>
     <icon>icon.png</icon>
     <license type="file">LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>WPF aero glass window</description>
-	<releaseNotes>Support .NET 5</releaseNotes>
-	<copyright>Copyright ©2021 ZTI</copyright>
+	<releaseNotes>Add some new features</releaseNotes>
+	<copyright>Copyright ©2022 ZTI</copyright>
 	<tags>WPF .NET Aero Transparent Blur Window</tags>	
 	<dependencies>
         <group targetFramework=".NETFramework4.5"></group>   
         <group targetFramework=".NETCoreApp3.1"></group>
 		<group targetFramework="net5.0-windows"></group>
+		<group targetFramework="net6.0-windows"></group>
     </dependencies>
  </metadata>
  <files>
