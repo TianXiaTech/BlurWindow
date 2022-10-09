@@ -123,7 +123,7 @@ Specify background transparency
 
 **IsEnable ContextMenu**
 ```
-        IsEnableContextMenu="Visibility.Collapsed"
+        IsEnableContextMenu="true"
 ```
 <p align="center">
   <img align="center" alt="img background" src="ScreenShots/10.png" />
@@ -142,8 +142,6 @@ Specify background transparency
 </p>
 
 ## Todo
-* Show/Hide icon
-* Show/Hide control box
 * Use WPF attached property
 
 ## Thanks
