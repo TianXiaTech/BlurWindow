@@ -16,8 +16,6 @@
 	<dependencies>
         <group targetFramework=".NETFramework4.5"></group>   
         <group targetFramework=".NETCoreApp3.1"></group>
-		<group targetFramework="net5.0-windows"></group>
-		<group targetFramework="net6.0-windows"></group>
     </dependencies>
  </metadata>
  <files>
