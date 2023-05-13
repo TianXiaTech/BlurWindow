@@ -1,0 +1,1 @@
+.\nuget.exe pack .\BlurWindow.nuspec
