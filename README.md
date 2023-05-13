@@ -19,14 +19,16 @@
 </a>
 </p>
 
-WPF Aero Glass Lib
+WPF Aero Glass Lib  
+
+**Only Windows 10 and Windows 11(before 22H2) are supported**
 
 > The window style is located in Theme.xaml and can be modified by yourself.  
 > This project is part of [TianXiaTech](https://github.com/TianXiaTech)
 
 ## Nuget
 `
-PM>Install-Package BlurWindow -Version 4.0.0
+PM>Install-Package BlurWindow -Version 5.0.0
 `  
 
 ## Usage
