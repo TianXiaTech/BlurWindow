@@ -145,10 +145,10 @@
                                                     Content="{TemplateBinding Title}"  Margin="5,0,0,0" Visibility="{Binding TitleVisibility,RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </StackPanel>
                                 <StackPanel x:Name="WindowCommandButtonsStackPanel"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="{Binding ControlBoxVisibility,RelativeSource={RelativeSource TemplatedParent}}">
-                                    <Button x:Name="Minimize" Width="26.4" Height="26.4" ToolTip="Minimize"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}"  ContentTemplate="{StaticResource Minimize}"  Style="{StaticResource CaptionButtonStyle}"  IsTabStop="False" Margin="0,0,2,0"></Button>
+                                    <Button x:Name="Minimize" Width="26.4" Height="26.4" ToolTip="Minimize"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}"  ContentTemplate="{StaticResource Minimize}"  Style="{StaticResource CaptionButtonStyle}"  IsTabStop="False" Margin="0,0,2,0" Visibility="{Binding MinimizeVisibility,RelativeSource={RelativeSource TemplatedParent}}"></Button>
                                     <Button x:Name="Restore" Width="26.4" Height="26.4" ToolTip="Restore" WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}"   Visibility="Collapsed" ContentTemplate="{StaticResource Restore}" Style="{StaticResource CaptionButtonStyle}" IsTabStop="False"></Button>
-                                    <Button x:Name="Maximize"  Width="26.4" Height="26.4" ToolTip="Maximize" WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"   ContentTemplate="{StaticResource Maximize}" Style="{StaticResource CaptionButtonStyle}" Margin="0,0,1,0" IsTabStop="False"></Button>
-                                    <Button x:Name="Close" Width="26.4" Height="26.4" ToolTip="Close"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"   IsTabStop="False"  Style="{StaticResource CaptionButtonStyleForClose}"  ContentTemplate="{StaticResource Close}" ></Button>
+                                    <Button x:Name="Maximize"  Width="26.4" Height="26.4" ToolTip="Maximize" WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"   ContentTemplate="{StaticResource Maximize}" Style="{StaticResource CaptionButtonStyle}" Margin="0,0,1,0" IsTabStop="False" Visibility="{Binding MaximizeVisibility,RelativeSource={RelativeSource TemplatedParent}}"></Button>
+                                    <Button x:Name="Close" Width="26.4" Height="26.4" ToolTip="Close"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"   IsTabStop="False"  Style="{StaticResource CaptionButtonStyleForClose}"  ContentTemplate="{StaticResource Close}" Visibility="{Binding CloseVisibility,RelativeSource={RelativeSource TemplatedParent}}"></Button>
                                 </StackPanel>
                             </Grid>
                             <AdornerDecorator Grid.Row="0" Grid.RowSpan="2" KeyboardNavigation.IsTabStop="False">
@@ -175,10 +175,6 @@
                             <Setter TargetName="Restore" Property="Visibility" Value="Visible" />
                             <Setter TargetName="LayoutRoot" Property="Margin"  Value="7" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Normal">
-                            <Setter TargetName="Maximize" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
                         <Trigger Property="ResizeMode"  Value="NoResize">
                             <Setter TargetName="Minimize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
@@ -190,6 +186,38 @@
                                 <Condition Property="WindowState" Value="Normal" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Normal"/>
+                                <Condition Property="MaximizeVisibility" Value="Visible"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Normal"/>
+                                <Condition Property="MaximizeVisibility" Value="Collapsed"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Maximized"/>
+                                <Condition Property="MaximizeVisibility" Value="Collapsed"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="WindowState" Value="Maximized"/>
+                                <Condition Property="MaximizeVisibility" Value="Visible"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Visible" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

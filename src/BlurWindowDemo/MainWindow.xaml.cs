@@ -54,5 +54,35 @@ namespace BlurWindowDemo
         {
             this.TitleForeground = cbx_TitleForeground.SelectedIndex == 1 ? Brushes.Black : Brushes.Blue;
         }
+
+        private void cbx_Min_Checked(object sender, RoutedEventArgs e)
+        {
+            this.MinimizeVisibility = Visibility.Visible;
+        }
+
+        private void cbx_Min_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.MinimizeVisibility = Visibility.Collapsed;
+        }
+
+        private void cbx_Max_Checked(object sender, RoutedEventArgs e)
+        {
+            this.MaximizeVisibility = Visibility.Visible;
+        }
+
+        private void cbx_Max_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.MaximizeVisibility = Visibility.Collapsed;
+        }
+
+        private void cbx_Close_Checked(object sender, RoutedEventArgs e)
+        {
+            this.CloseVisibility = Visibility.Visible;
+        }
+
+        private void cbx_Close_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.CloseVisibility = Visibility.Collapsed;
+        }
     }
 }

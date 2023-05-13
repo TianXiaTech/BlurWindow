@@ -23,6 +23,9 @@ namespace TianXiaTech
         public static DependencyProperty IconVisibilityProperty = DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty TitleVisibilityProperty = DependencyProperty.Register("TitleVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty IsEnableContextMenuProperty = DependencyProperty.Register("IsEnableContextMenu", typeof(bool), typeof(BlurWindow), new PropertyMetadata(true));
+        public static DependencyProperty MinimizeVisibilityProperty = DependencyProperty.Register("MinimizeVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty MaximizeVisibilityProperty = DependencyProperty.Register("MaximizeVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty CloseVisibilityProperty = DependencyProperty.Register("CloseVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
 
         static BlurWindow()
         {
@@ -86,6 +89,42 @@ namespace TianXiaTech
             set
             {
                 SetValue(IsEnableContextMenuProperty, value);
+            }
+        }
+
+        public Visibility MinimizeVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(MinimizeVisibilityProperty);
+            }
+            set
+            {
+                SetValue(MinimizeVisibilityProperty, value);
+            }
+        }
+
+        public Visibility MaximizeVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(MaximizeVisibilityProperty);
+            }
+            set
+            {
+                SetValue(MaximizeVisibilityProperty, value);
+            }
+        }
+
+        public Visibility CloseVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(CloseVisibilityProperty);
+            }
+            set
+            {
+                SetValue(CloseVisibilityProperty, value);
             }
         }
 

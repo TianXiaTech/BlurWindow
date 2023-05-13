@@ -110,6 +110,18 @@
                     <Slider Width="120" Minimum="0" Maximum="1" TickFrequency="0.01" IsSnapToTickEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Name="slider_Opacity" Grid.Column="1" Value="{Binding ElementName=main,Path=(Window.Background).(SolidColorBrush.Opacity)}"></Slider>
                     <Label Content="{Binding ElementName=slider_Opacity,Path=Value}" Grid.Column="1" HorizontalAlignment="Left" Margin="130,0,0,0"></Label>
                 </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="控制按钮可见性"></Label>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <CheckBox Content="最小化按钮" Width="120" VerticalAlignment="Center" Name="cbx_Min" IsChecked="True" Checked="cbx_Min_Checked" Unchecked="cbx_Min_Unchecked"></CheckBox>
+                        <CheckBox Content="最大化按钮" Width="120" VerticalAlignment="Center" Name="cbx_Max" IsChecked="True" Checked="cbx_Max_Checked" Unchecked="cbx_Max_Unchecked"></CheckBox>
+                        <CheckBox Content="关闭按钮" Width="120" VerticalAlignment="Center" Name="cbx_Close" IsChecked="True" Checked="cbx_Close_Checked" Unchecked="cbx_Close_Unchecked"></CheckBox>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>
