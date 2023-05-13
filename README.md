@@ -129,6 +129,16 @@ Specify background transparency
   <img align="center" alt="img background" src="ScreenShots/10.png" />
 </p>
 
+**ControlBox Button Visibility**
+```
+        MinimizeVisibility = Visibility.Collapsed
+        MaximizeVisibility = Visibility.Collapsed
+        CloseVisibility = Visibility.Collapsed
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/11.png" />
+</p>
+
 ## Sample screenshot
 
 ### Opacity 0.8
