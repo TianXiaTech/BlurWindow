@@ -26,6 +26,7 @@ namespace TianXiaTech
         public static DependencyProperty MinimizeVisibilityProperty = DependencyProperty.Register("MinimizeVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty MaximizeVisibilityProperty = DependencyProperty.Register("MaximizeVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty CloseVisibilityProperty = DependencyProperty.Register("CloseVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
+        public static DependencyProperty ContentSpanProperty = DependencyProperty.Register("ContentSpan", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false));
 
         static BlurWindow()
         {
@@ -125,6 +126,18 @@ namespace TianXiaTech
             set
             {
                 SetValue(CloseVisibilityProperty, value);
+            }
+        }
+
+        public bool ContentSpan
+        {
+            get
+            {
+                return (bool)GetValue(ContentSpanProperty);
+            }
+            set
+            {
+                SetValue(ContentSpanProperty, value);
             }
         }
 

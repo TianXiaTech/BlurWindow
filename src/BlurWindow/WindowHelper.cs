@@ -9,7 +9,7 @@ using System.Windows.Interop;
 
 namespace TianXiaTech
 {
-    public struct ACCENTPOLICY
+    internal struct ACCENTPOLICY
     {
         public int nAccentState;
         public int nFlags;
@@ -17,14 +17,14 @@ namespace TianXiaTech
         public int nAnimationId;
     }
 
-    public struct WINCOMPATTRDATA
+    internal struct WINCOMPATTRDATA
     {
         public int nAttribute;
         public IntPtr pData;
         public int ulDataSize;
     }
 
-    public class WindowHelper
+    internal class WindowHelper
     {
         public const uint WM_SYSTEMMENU = 0xa4;
         public const uint WP_SYSTEMMENU = 0x02;

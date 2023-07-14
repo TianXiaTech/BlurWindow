@@ -2,7 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TianXiaTech"
+    xmlns:converter="clr-namespace:BlurWindow.Converters"
     x:Class="BlurWindow.Themes.BlurWindowEvent">
+
+    
+    <converter:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"></converter:BooleanVisibilityConverter>
+   
 
     <Style x:Key="CaptionButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False" />
@@ -151,20 +156,19 @@
                                     <Button x:Name="Close" Width="26.4" Height="26.4" ToolTip="Close"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"   IsTabStop="False"  Style="{StaticResource CaptionButtonStyleForClose}"  ContentTemplate="{StaticResource Close}" Visibility="{Binding CloseVisibility,RelativeSource={RelativeSource TemplatedParent}}"></Button>
                                 </StackPanel>
                             </Grid>
-                            <AdornerDecorator Grid.Row="0" Grid.RowSpan="2" KeyboardNavigation.IsTabStop="False">
-                                <ContentPresenter/>
-                            </AdornerDecorator>
+                            <Grid Grid.Row="0" Grid.RowSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="-1">
-                                <Grid>
+                                <Grid Grid.Row="0" Height="26.4" Visibility="{Binding ContentSpan,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooleanVisibilityConverter}}"></Grid>
 
-                                    <!--Full window Background-->
-                                    <!--<Grid.Background>
-                                        <ImageBrush ImageSource="../timg.jpg"  Stretch="UniformToFill"/>
-                                    </Grid.Background>-->
-
-                                </Grid>
+                                <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
                             </Grid>
+                          
                             <ResizeGrip x:Name="ResizeGrip"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" IsTabStop="False" Visibility="Hidden" WindowChrome.ResizeGripDirection="BottomRight" />
                         </Grid>
                     </Border>

@@ -27,7 +27,7 @@ namespace BlurWindowDemo
 
         private void cbx_FullContent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.titlegrid.Visibility = this.cbx_FullContent.SelectedIndex == 0 ? Visibility.Visible : Visibility.Collapsed;
+            this.ContentSpan = this.cbx_FullContent.SelectedIndex == 1;
         }
 
         private void cbx_IconVisibility_SelectionChanged(object sender, SelectionChangedEventArgs e)

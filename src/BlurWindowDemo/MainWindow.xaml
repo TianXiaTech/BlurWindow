@@ -12,16 +12,6 @@
         <SolidColorBrush Color="White" Opacity=".5"/>
     </Window.Background>
     <Grid>
-        <Grid.RowDefinitions>
-            <!--Reserve full screen background-->
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Height="26.4" Name="titlegrid">
-            
-        </Grid>
-
         <!--Add your content here-->
         <Grid Grid.Row="1" Name="maingrid">
             <StackPanel>
