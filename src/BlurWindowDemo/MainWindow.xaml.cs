@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,6 +84,37 @@ namespace BlurWindowDemo
         private void cbx_Close_Unchecked(object sender, RoutedEventArgs e)
         {
             this.CloseVisibility = Visibility.Collapsed;
+        }
+
+        private void cbx_DynamicBackground_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cbx_DynamicBackground.SelectedIndex == 0)
+            {
+                CloseDynamicWallpaer();
+                dynamicbackgroundgrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OpenDyanmicWallpaper();
+                dynamicbackgroundgrid.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OpenDyanmicWallpaper()
+        {
+            player.Source = new Uri("default.mp4", UriKind.Relative);
+            player.Play();
+        }
+
+        private void CloseDynamicWallpaer()
+        {
+            player.Stop();
+        }
+
+        private void player_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            player.Stop();
+            player.Play();
         }
     }
 }
