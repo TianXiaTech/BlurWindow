@@ -3,16 +3,28 @@
   <metadata>
     <id>BlurWindow</id>
     <title>BlurWindow</title>
-    <version>5.0.0</version>
+    <version>6.0.0</version>
     <authors>ZTI</authors>
     <projectUrl>https://github.com/TianXiaTech/BlurWindow</projectUrl>
     <icon>icon.png</icon>
     <license type="file">LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>WPF aero glass window</description>
-	<releaseNotes>ControlBox button visibility control</releaseNotes>
+    <description>
+    WPF aero glass window lib
+    
+    Features:
+	  - blur window
+	  - custom title foreground
+	  - controlBox visibility
+	  - icon visibility
+	  - title visibility
+	  - enable/disable context menu 
+	  - control box visibility
+	  - content span
+    </description>
+	<releaseNotes>Add ContentSpan</releaseNotes>
 	<copyright>Copyright ©2023 ZTI</copyright>
-	<tags>WPF .NET Aero Transparent Blur Window</tags>	
+	<tags>WPF .NET Aero Transparent Blur Window XAML</tags>	
 	<dependencies>
         <group targetFramework=".NETFramework4.5"></group>   
         <group targetFramework=".NETCoreApp3.1"></group>

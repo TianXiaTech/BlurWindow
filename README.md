@@ -141,6 +141,14 @@ Specify background transparency
   <img align="center" alt="img background" src="ScreenShots/11.png" />
 </p>
 
+**ContentSpan**
+```
+        ContentSpan = "true"
+```
+<p align="center">
+  <img align="center" alt="img background" src="ScreenShots/12.png" />
+</p>
+
 ## Sample screenshot
 
 ### Opacity 0.8

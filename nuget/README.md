@@ -80,12 +80,17 @@ Specify background transparency
         IsEnableContextMenu="true"
 ```
 
-## New feature
 **ControlBox Button Visibility**
 ```
         MinimizeVisibility = Visibility.Collapsed
         MaximizeVisibility = Visibility.Collapsed
         CloseVisibility = Visibility.Collapsed
+```
+
+## New feature
+**ContentSpan** 
+```
+        ContentSpan="true"
 ```
 
 ## License
