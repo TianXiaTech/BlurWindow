@@ -87,10 +87,15 @@ Specify background transparency
         CloseVisibility = Visibility.Collapsed
 ```
 
-## New feature
 **ContentSpan** 
 ```
         ContentSpan="true"
+```
+
+## New feature
+**IsBlurBackground** 
+```
+        IsBlurBackground="true"
 ```
 
 ## License
