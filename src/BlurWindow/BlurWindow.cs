@@ -27,10 +27,26 @@ namespace TianXiaTech
         public static DependencyProperty MaximizeVisibilityProperty = DependencyProperty.Register("MaximizeVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty CloseVisibilityProperty = DependencyProperty.Register("CloseVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty ContentSpanProperty = DependencyProperty.Register("ContentSpan", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false));
+        public static DependencyProperty IsBlurBackgroundProperty = DependencyProperty.Register("IsBlurBackground", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false, OnIsBlurBackgroundChanged));
+
+        private Window blurBackgroundWindow;
 
         static BlurWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(BlurWindow), new FrameworkPropertyMetadata(typeof(BlurWindow)));
+        }
+
+        static void OnIsBlurBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var blurWindow = d as BlurWindow;
+            if ((bool)e.NewValue == true)
+            {
+                blurWindow.ShowBlurBackground();
+            }
+            else
+            {
+                blurWindow.CloseBlurBackground();
+            }
         }
 
         public SolidColorBrush TitleForeground
@@ -141,10 +157,70 @@ namespace TianXiaTech
             }
         }
 
+        public bool IsBlurBackground
+        {
+            get
+            {
+                return (bool)GetValue(IsBlurBackgroundProperty);
+            }
+            set
+            {
+                SetValue(IsBlurBackgroundProperty, value);
+            }
+        }
+
         public BlurWindow()
         {
             InitializeCommands();
-            this.Loaded += (a, b) => WindowHelper.BlurWindow(this);
+            this.Loaded += (a, b) =>
+            {
+                WindowHelper.BlurWindow(this);
+            };
+            this.Closing += (a, b) =>
+            {
+                CloseBlurBackground();
+            };
+            this.SizeChanged += (a, b) => 
+            {
+                if (blurBackgroundWindow == null)
+                    return;
+                blurBackgroundWindow.Width = b.NewSize.Width;
+                blurBackgroundWindow.Height = b.NewSize.Height;
+                this.Focus();
+            };
+            this.StateChanged += (a, b) => 
+            {
+                if (blurBackgroundWindow == null)
+                    return;
+
+                blurBackgroundWindow.WindowState = this.WindowState;
+
+                if(blurBackgroundWindow.WindowState == WindowState.Maximized)
+                {
+                    blurBackgroundWindow.WindowState = WindowState.Normal;
+                    blurBackgroundWindow.Height = this.Height;
+                    blurBackgroundWindow.Width = this.Width;
+                    blurBackgroundWindow.Left = 0;
+                    blurBackgroundWindow.Top = 0;
+                    BeginBlurBackgroundAnimation();
+                }
+
+                if(this.WindowState == WindowState.Normal)
+                {
+                    BeginBlurBackgroundAnimation();
+                }
+
+                this.Focus();
+            };
+            this.LocationChanged += (a, b) => 
+            {
+                if (blurBackgroundWindow == null)
+                    return;
+
+                blurBackgroundWindow.Left = this.Left;
+                blurBackgroundWindow.Top = this.Top;
+                this.Focus();
+            };
         }
 
         private void InitializeCommands()
@@ -153,6 +229,57 @@ namespace TianXiaTech
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow, CanResizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow, CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow, CanResizeWindow));
+        }
+
+        internal async void ShowBlurBackground()
+        {
+            if(blurBackgroundWindow == null)
+                blurBackgroundWindow = new Window();
+            blurBackgroundWindow.WindowStyle = WindowStyle.None;
+            blurBackgroundWindow.ResizeMode = ResizeMode.NoResize;
+            blurBackgroundWindow.ShowInTaskbar = false;
+            blurBackgroundWindow.Width = this.Width;
+            blurBackgroundWindow.Height = this.Height;
+            blurBackgroundWindow.Left = this.Left;
+            blurBackgroundWindow.Top = this.Top;
+            blurBackgroundWindow.Background = this.Background;
+            this.Background = new SolidColorBrush() { Color = Colors.White, Opacity = 0 };
+            blurBackgroundWindow.AllowsTransparency = true;
+            blurBackgroundWindow.Show();
+            await Task.Delay(200);
+            this.Focus();
+        }
+
+        internal void CloseBlurBackground()
+        {
+            if(this.blurBackgroundWindow != null)
+            {
+                this.Background = blurBackgroundWindow.Background;
+                this.blurBackgroundWindow.Close();
+                this.blurBackgroundWindow = null;
+            }         
+        }
+
+        private void BeginBlurBackgroundAnimation()
+        {
+            blurBackgroundWindow.Opacity = 0;
+            System.Windows.Media.Animation.DoubleAnimation doubleAnimation = new System.Windows.Media.Animation.DoubleAnimation();
+            doubleAnimation.From = 0;
+            doubleAnimation.To = 1;
+            doubleAnimation.Duration = TimeSpan.FromMilliseconds(500);
+            blurBackgroundWindow.BeginAnimation(OpacityProperty, doubleAnimation);
+        }
+
+        public void SetBackground(Brush brush)
+        {
+            if (this.blurBackgroundWindow != null)
+            {
+                this.blurBackgroundWindow.Background = brush;
+            }
+            else
+            {
+                this.Background = brush;
+            }
         }
 
         protected override void OnSourceInitialized(EventArgs e)

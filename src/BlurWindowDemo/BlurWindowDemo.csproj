@@ -5,6 +5,7 @@
     <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
     <UseWPF>true</UseWPF>
+    <AssemblyVersion>7.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

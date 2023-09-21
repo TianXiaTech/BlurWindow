@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BlurWindowDemo"
         mc:Ignorable="d"
         xmlns:control="clr-namespace:TianXiaTech;assembly=BlurWindow"
-        Title="BlurWindowDemo" Height="450" Width="800" Icon="icon.png" BorderBrush="Transparent" TitleForeground="Blue" Name="main">
+        Title="BlurWindowDemo" Height="550" Width="800" Icon="icon.png" BorderBrush="Transparent" TitleForeground="Blue" Name="main">
     <Window.Background>
         <!--Specify transparency here-->
         <SolidColorBrush Color="White" Opacity=".5"/>
@@ -127,6 +127,21 @@
                             <ComboBoxItem>禁用</ComboBoxItem>
                             <ComboBoxItem>启用</ComboBoxItem>
                         </ComboBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="毛玻璃化背景"></Label>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <ComboBox Width="120" SelectedIndex="0" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cbx_BlurBackground_SelectionChanged" Name="cbx_BlurBackground" Grid.Column="1">
+                            <ComboBoxItem>禁用</ComboBoxItem>
+                            <ComboBoxItem>启用</ComboBoxItem>
+                        </ComboBox>
+
+                        <Button Content="设置背景" Margin="80,0,0,0" Name="btn_SetBackground" Click="btn_SetBackground_Click"></Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>

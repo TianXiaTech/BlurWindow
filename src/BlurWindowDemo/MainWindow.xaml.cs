@@ -88,7 +88,10 @@ namespace BlurWindowDemo
 
         private void cbx_DynamicBackground_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(cbx_DynamicBackground.SelectedIndex == 0)
+            //TODO merge static and dynamic  background
+            this.IsBlurBackground = false;
+
+            if (cbx_DynamicBackground.SelectedIndex == 0)
             {
                 CloseDynamicWallpaer();
                 dynamicbackgroundgrid.Visibility = Visibility.Collapsed;
@@ -115,6 +118,36 @@ namespace BlurWindowDemo
         {
             player.Stop();
             player.Play();
+        }
+
+        private void cbx_BlurBackground_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cbx_BlurBackground.SelectedIndex == 0)
+            {
+                IsBlurBackground = false;
+            }
+            else
+            {
+                IsBlurBackground = true;
+            }
+        }
+
+        private void btn_SetBackground_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "图片文件|*.jpg;*.png;*.bmp";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            if(openFileDialog.ShowDialog() == true)
+            {
+                ImageBrush ib = new ImageBrush();
+                ib.Stretch = Stretch.UniformToFill;
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.UriSource = new Uri(openFileDialog.FileName, UriKind.Absolute);
+                bi.EndInit();
+                ib.ImageSource = bi;
+                this.SetBackground(ib);
+            }
         }
     }
 }
