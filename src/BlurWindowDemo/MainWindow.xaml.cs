@@ -24,6 +24,20 @@ namespace BlurWindowDemo
         public MainWindow()
         {
             InitializeComponent();
+            InitializeDemoUI();
+        }
+
+        private void InitializeDemoUI()
+        {
+            if(BlurWindow.Helpers.OsVersionHelper.IsGreaterThanWindows1122H2())
+            {
+                //Windows 11 >= 22H2
+                this.slider_AcrylicOpacity.Visibility = Visibility.Visible;
+                this.lbl_AcrylicOpacity.Visibility = Visibility.Visible;
+                this.slider_Opacity.Visibility = Visibility.Collapsed;
+                this.lbl_Opacity.Visibility = Visibility.Collapsed;
+                this.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#01000000"));
+            }
         }
 
         private void cbx_FullContent_SelectionChanged(object sender, SelectionChangedEventArgs e)

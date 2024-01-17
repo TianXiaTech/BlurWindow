@@ -38,23 +38,24 @@ namespace TianXiaTech
         private const int ACCENT_ENABLE_ACRYLICBLURBEHIND = 4;
         private const int WCA_ACCENT_POLICY = 19;
 
-        public static void BlurWindow(System.Windows.Window window)
+        public static void BlurWindow(System.Windows.Window window, int acrylicOpacity = 0)
         {
             var winhelp = new WindowInteropHelper(window);
             bool isGreaterThanWin1122H2 = OsVersionHelper.IsGreaterThanWindows1122H2();
 
             ACCENTPOLICY policy_Blur = new ACCENTPOLICY();
-            if(isGreaterThanWin1122H2)
+            if (isGreaterThanWin1122H2)
             {
                 policy_Blur.nAccentState = ACCENT_ENABLE_ACRYLICBLURBEHIND;
+                policy_Blur.nColor = (acrylicOpacity << 24) | (0xFFFFFF);
             }
             else
             {
                 policy_Blur.nAccentState = ACCENT_ENABLE_BLURBEHIND;
+                policy_Blur.nColor = 0;
             }
-          
+
             policy_Blur.nFlags = 0;
-            policy_Blur.nColor = 0;
             policy_Blur.nAnimationId = 0;
 
             WINCOMPATTRDATA wINCOMPATTRDATA = new WINCOMPATTRDATA();

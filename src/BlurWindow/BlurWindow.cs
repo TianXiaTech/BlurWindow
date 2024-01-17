@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlurWindow.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace TianXiaTech
         public static DependencyProperty CloseVisibilityProperty = DependencyProperty.Register("CloseVisibility", typeof(Visibility), typeof(BlurWindow), new PropertyMetadata(Visibility.Visible));
         public static DependencyProperty ContentSpanProperty = DependencyProperty.Register("ContentSpan", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false));
         public static DependencyProperty IsBlurBackgroundProperty = DependencyProperty.Register("IsBlurBackground", typeof(bool), typeof(BlurWindow), new PropertyMetadata(false, OnIsBlurBackgroundChanged));
+        public static DependencyProperty AcrylicOpacityProperty = DependencyProperty.Register("AcrylicOpacity", typeof(byte), typeof(BlurWindow), new PropertyMetadata((byte)128, OnAcrylicOpacityChanged));
 
         private Window blurBackgroundWindow;
 
@@ -47,6 +49,12 @@ namespace TianXiaTech
             {
                 blurWindow.CloseBlurBackground();
             }
+        }
+
+        private static void OnAcrylicOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var blurWindow = d as BlurWindow;
+            WindowHelper.BlurWindow(blurWindow, (byte)e.NewValue);
         }
 
         public SolidColorBrush TitleForeground
@@ -169,6 +177,18 @@ namespace TianXiaTech
             }
         }
 
+        public byte AcrylicOpacity
+        {
+            get
+            {
+                return (byte)GetValue(AcrylicOpacityProperty);
+            }
+            set
+            {
+                SetValue(AcrylicOpacityProperty, value);
+            }
+        }
+
         public BlurWindow()
         {
             InitializeCommands();
@@ -221,6 +241,18 @@ namespace TianXiaTech
                 blurBackgroundWindow.Top = this.Top;
                 this.Focus();
             };
+
+            InitializeWindows1122H2Style();
+        }
+
+        private void InitializeWindows1122H2Style()
+        {
+            if (OsVersionHelper.IsGreaterThanWindows1122H2() == false)
+                return;
+
+            //set window style
+            this.AllowsTransparency = true;
+            this.WindowStyle = WindowStyle.None;
         }
 
         private void InitializeCommands()

@@ -21,14 +21,15 @@
 
 WPF Aero Glass Lib  
 
-**Only Windows 10 and Windows 11(before 22H2) are supported**
+~~**Only Windows 10 and Windows 11(before 22H2) are supported**~~
+**Support Windows 10 and Windows 11**
 
 > The window style is located in Theme.xaml and can be modified by yourself.  
 > This project is part of [TianXiaTech](https://github.com/TianXiaTech)
 
 ## Nuget
 `
-PM>Install-Package BlurWindow -Version 5.0.0
+PM>Install-Package BlurWindow -Version 7.0.0
 `  
 
 ## Usage
@@ -48,7 +49,7 @@ public partial class MainWindow : TianXiaTech.BlurWindow
 ```
 
 ### Step4  
-Specify background transparency  
+Specify background transparency 
 
 ```
 <Window.Background>
@@ -56,6 +57,13 @@ Specify background transparency
     <SolidColorBrush Color="White" Opacity=".5"/>  
  </Window.Background>
 ```
+
+If OS Version is Windows 11(greater than 22H2), the following additional properties need to be specified
+```
+   <!--Specify acrylic transparency-->
+   AcrylicOpacity="128"
+```
+
 
 ## Additional
 **You can set the window to be partially transparent, like below**  
@@ -165,7 +173,7 @@ Specify background transparency
 * Use WPF attached property
 
 ## Thanks
-Project reference https://github.com/TranslucentTB/TranslucentTB
+Project reference https://github.com/TranslucentTB/TranslucentTB and https://github.com/riverar/sample-win32-acrylicblur
 
 ## License
 

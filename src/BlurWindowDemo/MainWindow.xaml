@@ -102,7 +102,10 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="毛玻璃透明度"></Label>
                     <Slider Width="120" Minimum="0" Maximum="1" TickFrequency="0.01" IsSnapToTickEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Name="slider_Opacity" Grid.Column="1" Value="{Binding ElementName=main,Path=(Window.Background).(SolidColorBrush.Opacity)}"></Slider>
-                    <Label Content="{Binding ElementName=slider_Opacity,Path=Value}" Grid.Column="1" HorizontalAlignment="Left" Margin="130,0,0,0"></Label>
+                    <Label Content="{Binding ElementName=slider_Opacity,Path=Value}" Grid.Column="1" HorizontalAlignment="Left" Margin="130,0,0,0" Name="lbl_Opacity"></Label>
+
+                    <Slider Width="120" Minimum="1" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Name="slider_AcrylicOpacity" Grid.Column="1" Value="{Binding ElementName=main,Path=AcrylicOpacity}" Visibility="Collapsed"></Slider>
+                    <Label Content="{Binding ElementName=slider_AcrylicOpacity,Path=Value}" Grid.Column="1" HorizontalAlignment="Left" Margin="130,0,0,0" Name="lbl_AcrylicOpacity" Visibility="Collapsed"></Label>
                 </Grid>
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
