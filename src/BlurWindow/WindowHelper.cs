@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlurWindow.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -34,14 +35,24 @@ namespace TianXiaTech
         public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WINCOMPATTRDATA data);
 
         private const int ACCENT_ENABLE_BLURBEHIND = 3;
+        private const int ACCENT_ENABLE_ACRYLICBLURBEHIND = 4;
         private const int WCA_ACCENT_POLICY = 19;
 
         public static void BlurWindow(System.Windows.Window window)
         {
             var winhelp = new WindowInteropHelper(window);
+            bool isGreaterThanWin1122H2 = OsVersionHelper.IsGreaterThanWindows1122H2();
 
             ACCENTPOLICY policy_Blur = new ACCENTPOLICY();
-            policy_Blur.nAccentState = ACCENT_ENABLE_BLURBEHIND;
+            if(isGreaterThanWin1122H2)
+            {
+                policy_Blur.nAccentState = ACCENT_ENABLE_ACRYLICBLURBEHIND;
+            }
+            else
+            {
+                policy_Blur.nAccentState = ACCENT_ENABLE_BLURBEHIND;
+            }
+          
             policy_Blur.nFlags = 0;
             policy_Blur.nColor = 0;
             policy_Blur.nAnimationId = 0;
