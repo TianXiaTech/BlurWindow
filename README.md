@@ -29,7 +29,7 @@ WPF Aero Glass Lib
 
 ## Nuget
 `
-PM>Install-Package BlurWindow -Version 7.0.0
+PM>Install-Package BlurWindow -Version 7.0.1
 `  
 
 ## Usage

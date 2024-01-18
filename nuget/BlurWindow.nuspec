@@ -3,7 +3,7 @@
   <metadata>
     <id>BlurWindow</id>
     <title>BlurWindow</title>
-    <version>7.0.0</version>
+    <version>7.0.1</version>
     <authors>ZTI</authors>
     <projectUrl>https://github.com/TianXiaTech/BlurWindow</projectUrl>
     <icon>icon.png</icon>
@@ -22,9 +22,13 @@ Features:
     - control box visibility
     - content span
     - blur background
+    
+What's Changed:
+    - support Windows 11(version >= 22H2)
+    - stability improvement
     </description>
-	<releaseNotes>Add ContentSpan</releaseNotes>
-	<copyright>Copyright ©2023 ZTI</copyright>
+	<releaseNotes>support Windows 11(version >= 22H2)</releaseNotes>
+	<copyright>Copyright ©2024 ZTI</copyright>
 	<tags>WPF .NET Aero Transparent Blur Window XAML</tags>	
 	<dependencies>
         <group targetFramework=".NETFramework4.5"></group>   

@@ -1,6 +1,6 @@
 WPF Aero Glass Lib  
 
-**Only Windows 10 and Windows 11(before 22H2) are supported**
+**Support Windows 10 (>= 1703) and Windows 11(>= 21H2)**
 
 ## Usage
 ### Step 1
@@ -25,6 +25,12 @@ Specify background transparency
 <Window.Background>
     <SolidColorBrush Color="White" Opacity=".5"/>  
  </Window.Background>
+```  
+
+If OS Version is Windows 11(version >=22H2), the following additional properties need to be specified
+```
+   <!--Specify acrylic transparency-->
+   AcrylicOpacity="128"
 ```
 
 ## Additional
@@ -92,11 +98,13 @@ Specify background transparency
         ContentSpan="true"
 ```
 
-## New feature
 **IsBlurBackground** 
 ```
         IsBlurBackground="true"
 ```
+
+## New feature
+**Support Windows 11(Version >= 22H2)** 
 
 ## License
 
