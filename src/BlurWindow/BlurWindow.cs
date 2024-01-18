@@ -206,14 +206,12 @@ namespace TianXiaTech
                     return;
                 blurBackgroundWindow.Width = b.NewSize.Width;
                 blurBackgroundWindow.Height = b.NewSize.Height;
-                this.Focus();
+                BringWindowToTop(this, blurBackgroundWindow);
             };
             this.StateChanged += (a, b) => 
             {
                 if (blurBackgroundWindow == null)
                     return;
-
-                blurBackgroundWindow.WindowState = this.WindowState;
 
                 if(blurBackgroundWindow.WindowState == WindowState.Maximized)
                 {
@@ -229,8 +227,6 @@ namespace TianXiaTech
                 {
                     BeginBlurBackgroundAnimation();
                 }
-
-                this.Focus();
             };
             this.LocationChanged += (a, b) => 
             {
@@ -239,7 +235,7 @@ namespace TianXiaTech
 
                 blurBackgroundWindow.Left = this.Left;
                 blurBackgroundWindow.Top = this.Top;
-                this.Focus();
+                BringWindowToTop(this, blurBackgroundWindow,true);
             };
 
             InitializeWindows1122H2Style();
@@ -275,11 +271,13 @@ namespace TianXiaTech
             blurBackgroundWindow.Left = this.Left;
             blurBackgroundWindow.Top = this.Top;
             blurBackgroundWindow.Background = this.Background;
+            blurBackgroundWindow.Title = "BlurBackground";
             this.Background = new SolidColorBrush() { Color = Colors.White, Opacity = 0 };
             blurBackgroundWindow.AllowsTransparency = true;
             blurBackgroundWindow.Show();
             await Task.Delay(200);
-            this.Focus();
+            WindowHelper.HideWindowInSwitcher(blurBackgroundWindow);
+            BringWindowToTop(this, blurBackgroundWindow);
         }
 
         internal void CloseBlurBackground()
@@ -369,6 +367,24 @@ namespace TianXiaTech
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.RestoreWindow(this);
+        }
+
+        private void BringWindowToTop(Window topWindow,Window bottomWindow,bool isMove = false)
+        {
+            //replace with winapi in some event
+            if(isMove)
+            {
+                this.Focus();
+            }
+            else
+            {
+                IntPtr topWindowPtr = new WindowInteropHelper(topWindow).Handle;
+                IntPtr bottomWindowPtr = IntPtr.Zero;
+                if (bottomWindow != null)
+                    bottomWindowPtr = new WindowInteropHelper(bottomWindow).Handle;
+                WindowHelper.SetTopWindow(topWindowPtr, bottomWindowPtr);
+            }
+
         }
     }
 }

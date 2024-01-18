@@ -37,6 +37,8 @@ namespace BlurWindowDemo
                 this.slider_Opacity.Visibility = Visibility.Collapsed;
                 this.lbl_Opacity.Visibility = Visibility.Collapsed;
                 this.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#01000000"));
+                this.cbx_BlurBackground.IsEnabled = false;
+                this.btn_SetBackground.IsEnabled = false;
             }
         }
 
